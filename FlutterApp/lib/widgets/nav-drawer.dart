@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:FlutterApp/screens/profile.dart';
+import 'package:FlutterApp/screens/gallery.dart';
+import 'package:FlutterApp/screens/musicplayer.dart';
+
 class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,17 +30,29 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Profile()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Gallery'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Gallery()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('Music Player'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MusicPlayer()));
+            },
           ),
         ],
       ),
