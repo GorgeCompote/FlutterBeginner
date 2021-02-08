@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:FlutterApp/screens/profile.dart';
 import 'package:FlutterApp/screens/gallery.dart';
 import 'package:FlutterApp/screens/musicplayer.dart';
@@ -11,17 +10,6 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text(
-              'Side menu',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-                color: Colors.green,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/gallery.png'))),
-          ),
           ListTile(
             leading: Icon(Icons.input),
             title: Text('Welcome'),
