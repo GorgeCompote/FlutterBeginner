@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:FlutterApp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:localstorage/localstorage.dart';
 
 class InitScreen extends StatefulWidget {
   @override
@@ -35,9 +37,24 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  @override
+  void initState() {
+    super.initState();
+    getItems();
+  }
   PickedFile _imageFile;
+  var imageUrl = '';
 
   final ImagePicker _picker = ImagePicker();
+  final LocalStorage storage = new LocalStorage('localStorage_app');
+
+  getItems() async {
+    final LocalStorage storage = new LocalStorage('localStorage_app');
+    await storage.ready;
+    setState(() {
+    });
+  }
+
 
   @override
   Widget build (BuildContext context) {
@@ -64,8 +81,7 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Center(
                     child: CircleAvatar(
-                      backgroundImage: _imageFile==null ? AssetImage("assets/profile_picture.jpg") : FileImage(File(_imageFile.path)),
-                      //backgroundImage: AssetImage("assets/profile_picture.jpg"),
+                      backgroundImage: storage.getItem('profilePic_url') == null ? AssetImage("assets/profile_picture.jpg") : FileImage(File(storage.getItem('profilePic_url'))),
                       radius: 80.0
                     ),
                   ),
@@ -270,49 +286,9 @@ class _ProfileState extends State<Profile> {
     final pickedFile = await _picker.getImage(
       source: source,
     );
+    storage.setItem('profilePic_url', pickedFile.path);
     setState(() {
       _imageFile = pickedFile;
     });
   }
 }
-
-/*Widget bottomSheet() {
-  return Container(
-    height: 100,
-    width: ScreenUtil().setWidth(410),
-    child: Column(
-      children: [
-        Text(
-          'Choose profile picture',
-          style: TextStyle(
-            fontSize: 20.0,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-                padding: EdgeInsets.only(top: 12.0)
-            ),
-            TextButton.icon(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.camera
-                ),
-                label: Text('camera')
-            ),
-            TextButton.icon(
-              onPressed: () {
-              },
-              icon: Icon(
-                Icons.camera,
-              ),
-              label: Text('gallery')
-            ),
-          ],
-        )
-      ],
-    ),
-  );
-}
-*/
