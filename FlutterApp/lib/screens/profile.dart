@@ -40,21 +40,13 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
-    getItems();
   }
   PickedFile _imageFile;
   var imageUrl = '';
 
   final ImagePicker _picker = ImagePicker();
   final LocalStorage storage = new LocalStorage('localStorage_app');
-
-  getItems() async {
-    final LocalStorage storage = new LocalStorage('localStorage_app');
-    await storage.ready;
-    setState(() {
-    });
-  }
-
+  bool initialized = false;
 
   @override
   Widget build (BuildContext context) {
@@ -80,9 +72,23 @@ class _ProfileState extends State<Profile> {
               child: Stack(
                 children: [
                   Center(
-                    child: CircleAvatar(
-                      backgroundImage: storage.getItem('profilePic_url') == null ? AssetImage("assets/profile_picture.jpg") : FileImage(File(storage.getItem('profilePic_url'))),
-                      radius: 80.0
+                    child: FutureBuilder(
+                      future: storage.ready,
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data == null) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (!initialized) {
+                          imageUrl = storage.getItem('profilePic_url');
+                          initialized = true;
+                        }
+                        return CircleAvatar(
+                            backgroundImage: imageUrl == null ? AssetImage("assets/profile_picture.jpg") : FileImage(File(imageUrl)),
+                            radius: 80.0
+                        );
+                      },
                     ),
                   ),
                   Container(
@@ -289,6 +295,7 @@ class _ProfileState extends State<Profile> {
     storage.setItem('profilePic_url', pickedFile.path);
     setState(() {
       _imageFile = pickedFile;
+      imageUrl = pickedFile.path;
     });
   }
 }
