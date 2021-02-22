@@ -20,8 +20,8 @@ class NavDrawer extends StatelessWidget {
             title: Text('Profile'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => InitScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InitScreen()));
             },
           ),
           ListTile(
@@ -39,7 +39,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MusicPlayer()));
+                  context, MaterialPageRoute(builder: (context) => Musics()));
             },
           ),
         ],
