@@ -112,7 +112,7 @@ class _ProfileState extends State<Profile> {
                         }
                         return CircleAvatar(
                             backgroundImage: imageUrl == null ? AssetImage("assets/profile_picture.jpg") : FileImage(File(imageUrl)),
-                            radius: 80.0
+                            radius: 100.0
                         );
                       },
                     ),
@@ -172,7 +172,10 @@ class _ProfileState extends State<Profile> {
                             leading: Icon(Icons.account_circle),
                             title: Text(
                               'Your Bio :',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blueAccent
+                              ),
                             ),
                             subtitle: Text(
                               _bio == null ? 'please enter a new bio' : _bio,
@@ -339,18 +342,29 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
   TextEditingController _bioController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
   TextEditingController _townController = TextEditingController();
   TextEditingController _countryController = TextEditingController();
+  var _country = '';
   TextEditingController _facebookUrlController = TextEditingController();
   TextEditingController _instaUrlController = TextEditingController();
   TextEditingController _twitterUrlController = TextEditingController();
   final LocalStorage storage = new LocalStorage('localStorage_app');
   final datas = new StoreData();
+  var countries = ["Change your country","United States", "Canada", "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and/or Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecudaor", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France, Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kosovo", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfork Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbarn and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States minor outlying islands", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City State", "Venezuela", "Vietnam", "Virigan Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zaire", "Zambia", "Zimbabwe"];
+  var currentItemSelected = 'Change your country';
+
   @override
   Widget build(BuildContext context) {
+    var coeffScreen = MediaQuery.of(context).size.width * 0.06;
+    print(ScreenUtil().screenWidth);
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit profile page'),
@@ -406,14 +420,34 @@ class EditProfile extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(12.0),
-              child: TextFormField(
-                controller: _countryController,
+              child: DropdownButtonFormField(
                 decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: 'Change your country',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.airplanemode_active_rounded)
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  hintText: 'Change your country',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.airplanemode_active_rounded)
                 ),
+                icon: Icon(
+                  Icons.arrow_drop_down
+                ),
+                iconSize: 36.0,
+                items: countries.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(
+                      dropDownStringItem,
+                      style: TextStyle(
+                          color: Color(0xFF656565)
+                      ),
+                    ),
+                  );
+                }).toList(),
+                onChanged: (String newValueSelected) {
+                  setState(() {
+                    this.currentItemSelected = newValueSelected;
+                    _country = newValueSelected;
+                  });
+                },
               ),
             ),
             Padding(
@@ -491,9 +525,9 @@ class EditProfile extends StatelessWidget {
                             storage.setItem('town', _townController.text);
                             datas.town = _townController.text;
                           }
-                          if (_countryController.text != null && _countryController.text != '') {
-                            storage.setItem('country', _countryController.text);
-                            datas.country = _countryController.text;
+                          if (_country != null && _country != '') {
+                            storage.setItem('country', _country);
+                            datas.country = _country;
                           }
                           if (_facebookUrlController.text != null && _facebookUrlController.text != '') {
                             storage.setItem('facebookUrl', _facebookUrlController.text);
