@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 
+import '../main.dart';
+
 // void main() => runApp(new MyApp());
 
 class Gallery extends StatefulWidget {
@@ -68,6 +70,12 @@ class _GalleryState extends State<Gallery> {
       home: new Scaffold(
         appBar: new AppBar(
           title: const Text('Gallery'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+            },
+          ),
         ),
         body: Column(
           children: <Widget>[

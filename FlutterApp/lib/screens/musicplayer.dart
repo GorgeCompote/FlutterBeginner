@@ -3,6 +3,8 @@ import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'dart:io';
 import 'dart:async';
 
+import '../main.dart';
+
 class Musics extends StatefulWidget {
   @override
   _MusicPlayer createState() => _MusicPlayer();
@@ -30,7 +32,12 @@ class _MusicPlayer extends State<Musics> {
       appBar: AppBar(
         title: Text('Music Player'),
         backgroundColor: Colors.lightBlue[600],
-        leading: Icon(Icons.music_note, color: Colors.white),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+          },
+        ),
       ),
       body: Container(
         child: ListView.separated(

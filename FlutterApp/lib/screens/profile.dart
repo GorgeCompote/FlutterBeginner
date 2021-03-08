@@ -72,6 +72,12 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile page'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
