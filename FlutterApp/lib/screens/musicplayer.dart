@@ -1,7 +1,7 @@
+import 'package:FlutterApp/screens/track_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'dart:io';
-import 'dart:async';
 
 import '../main.dart';
 
@@ -13,6 +13,7 @@ class Musics extends StatefulWidget {
 class _MusicPlayer extends State<Musics> {
   FlutterAudioQuery audioQuery = FlutterAudioQuery();
   List<SongInfo> songs = [];
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -35,7 +36,8 @@ class _MusicPlayer extends State<Musics> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyHomePage()));
           },
         ),
       ),
@@ -51,7 +53,13 @@ class _MusicPlayer extends State<Musics> {
             ),
             title: Text(songs[index].title),
             subtitle: Text(songs[index].artist),
-            onTap: () {},
+            onTap: () {
+              currentIndex = index;
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => TrackListener(
+                        songInfo: songs[currentIndex],
+                      )));
+            },
           ),
         ),
       ),
