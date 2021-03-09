@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:FlutterApp/screens/profile.dart';
-import 'package:FlutterApp/screens/gallery.dart';
+import 'package:FlutterApp/screens/gallery/gallery.dart';
 import 'package:FlutterApp/screens/musicplayer.dart';
 
 class NavDrawer extends StatelessWidget {
