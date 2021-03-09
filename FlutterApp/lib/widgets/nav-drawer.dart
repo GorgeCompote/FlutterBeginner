@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:FlutterApp/screens/profile.dart';
+import 'package:FlutterApp/screens/profile/profile.dart';
 import 'package:FlutterApp/screens/gallery/gallery.dart';
 import 'package:FlutterApp/screens/musicplayer/musicplayer.dart';
 
