@@ -1,6 +1,6 @@
-import 'package:FlutterApp/models/data-store-classes-profile.dart';
-import 'package:FlutterApp/widgets/dropdownbutton-country-profile.dart';
-import 'package:FlutterApp/widgets/input-text-column-edit.dart';
+import 'package:multimedia_app/models/data-store-classes-profile.dart';
+import 'package:multimedia_app/widgets/dropdownbutton-country-profile.dart';
+import 'package:multimedia_app/widgets/input-text-column-edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';

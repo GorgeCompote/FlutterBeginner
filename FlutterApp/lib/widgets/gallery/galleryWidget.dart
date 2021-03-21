@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:FlutterApp/screens/gallery/thumbnail.dart';
+import 'package:multimedia_app/screens/gallery/thumbnail.dart';
 
 class GalleryWidget extends StatefulWidget {
   List<AssetEntity> assets;

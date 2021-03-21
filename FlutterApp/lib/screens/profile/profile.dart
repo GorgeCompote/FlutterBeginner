@@ -1,15 +1,15 @@
 import 'dart:io';
-import 'package:FlutterApp/main.dart';
-import 'package:FlutterApp/widgets/bottom-sheet-camera.dart';
-import 'package:FlutterApp/widgets/list-tiles/simple-listTile-profile.dart';
+import 'package:multimedia_app/main.dart';
+import 'package:multimedia_app/widgets/bottom-sheet-camera.dart';
+import 'package:multimedia_app/widgets/list-tiles/simple-listTile-profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:FlutterApp/widgets/list-tiles/list-tiles-profile.dart';
-import 'package:FlutterApp/widgets/list-tiles/list-tiles-socialNetworks.dart';
+import 'package:multimedia_app/widgets/list-tiles/list-tiles-profile.dart';
+import 'package:multimedia_app/widgets/list-tiles/list-tiles-socialNetworks.dart';
 import 'edit-profile.dart';
 
 class InitScreen extends StatefulWidget {

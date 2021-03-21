@@ -1,4 +1,4 @@
-import 'package:FlutterApp/screens/musicplayer/track_listener.dart';
+import 'package:multimedia_app/screens/musicplayer/track_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'dart:io';

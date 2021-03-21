@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:FlutterApp/widgets/gallery/galleryWidget.dart';
+import 'package:multimedia_app/widgets/gallery/galleryWidget.dart';
 
 class Gallery extends StatefulWidget {
   @override

@@ -1,4 +1,4 @@
-import 'package:FlutterApp/screens/profile/profile.dart';
+import 'package:multimedia_app/screens/profile/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

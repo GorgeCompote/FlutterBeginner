@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:video_player/video_player.dart';
-import 'package:FlutterApp/widgets/gallery/videoWidget.dart';
+import 'package:multimedia_app/widgets/gallery/videoWidget.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({

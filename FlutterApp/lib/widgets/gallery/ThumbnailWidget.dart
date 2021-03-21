@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
-import 'package:FlutterApp/screens/gallery/video.dart';
-import 'package:FlutterApp/screens/gallery/thumbnail.dart';
+import 'package:multimedia_app/screens/gallery/video.dart';
+import 'package:multimedia_app/screens/gallery/thumbnail.dart';
 
 class AssetThumbnailWidget extends StatelessWidget {
   final AssetEntity asset;

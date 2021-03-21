@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:FlutterApp/screens/profile/profile.dart';
-import 'package:FlutterApp/screens/gallery/gallery.dart';
-import 'package:FlutterApp/screens/musicplayer/musicplayer.dart';
+import 'package:multimedia_app/screens/profile/profile.dart';
+import 'package:multimedia_app/screens/gallery/gallery.dart';
+import 'package:multimedia_app/screens/musicplayer/musicplayer.dart';
 
 class NavDrawer extends StatelessWidget {
   @override

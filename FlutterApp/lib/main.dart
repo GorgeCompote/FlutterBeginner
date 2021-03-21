@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:FlutterApp/widgets/nav-drawer.dart';
+import 'package:multimedia_app/widgets/nav-drawer.dart';
 
 void main()  {
   runApp(MyApp());
