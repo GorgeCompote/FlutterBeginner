@@ -32,21 +32,4 @@ class _GalleryState extends State<Gallery> {
   Widget build(BuildContext context) {
     return GalleryWidget(assets: assets);
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text('Gallery'),
-  //     ),
-  //     body: GridView.builder(
-  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //         crossAxisCount: 3,
-  //       ),
-  //       itemCount: assets.length,
-  //       itemBuilder: (_, index) {
-  //         return AssetThumbnail(asset: assets[index]);
-  //       },
-  //     ),
-  //   );
-  // }
 }

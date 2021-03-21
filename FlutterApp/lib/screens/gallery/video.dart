@@ -40,37 +40,7 @@ class _VideoScreenState extends State<VideoScreen> {
       ..initialize().then((_) => setState(() => initialized = true));
   }
 
-   Widget build(BuildContext context){
+  Widget build(BuildContext context){
      return VideoScreenWidget(controller: _controller, initialized: initialized);
-   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: initialized
-  //         ? Scaffold(
-  //             body: Center(
-  //               child: AspectRatio(
-  //                 aspectRatio: _controller.value.aspectRatio,
-  //                 child: VideoPlayer(_controller),
-  //               ),
-  //             ),
-  //             floatingActionButton: FloatingActionButton(
-  //               onPressed: () {
-  //                 setState(() {
-  //                   if (_controller.value.isPlaying) {
-  //                     _controller.pause();
-  //                   } else {
-  //                     _controller.play();
-  //                   }
-  //                 });
-  //               },
-  //               child: Icon(
-  //                 _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-  //               ),
-  //             ),
-  //           )
-  //         : Center(child: CircularProgressIndicator()),
-  //   );
-  // }
+  }
 }
