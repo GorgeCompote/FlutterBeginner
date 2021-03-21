@@ -12,11 +12,6 @@ class NavDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.input),
-              title: Text('Welcome'),
-              onTap: () => {},
-            ),
-            ListTile(
               leading: Icon(Icons.verified_user),
               title: Text('Profile'),
               onTap: () {
