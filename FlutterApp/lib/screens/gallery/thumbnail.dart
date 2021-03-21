@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:photo_manager/photo_manager.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
-import 'package:FlutterApp/widgets/gallery/ImageScreenWidget.dart';
+import 'package:FlutterApp/widgets/gallery/imageScreenWidget.dart';
 import 'package:FlutterApp/widgets/gallery/ThumbnailWidget.dart';
 
 class AssetThumbnail extends StatelessWidget {
