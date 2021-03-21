@@ -17,6 +17,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget> {
     return Scaffold(
       body: widget.initialized
           ? Scaffold(
+              backgroundColor: Colors.black,
               body: Center(
                 child: AspectRatio(
                   aspectRatio: widget.controller.value.aspectRatio,

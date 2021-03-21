@@ -24,10 +24,13 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
-        title: Text('Side menu'),
+        title: Text('Multimedia App'),
       ),
       body: Center(
-        child: Text('Menu Skeleton'),
+        child: Text('Welcome to your multimedia application.\nChoose between profile, gallery and music player on the left menu.\nEnjoy!',
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.black.withOpacity(0.6),
+        height: 2, fontSize: 20),),
       ),
     );
   }
