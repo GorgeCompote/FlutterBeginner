@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'package:just_audio/just_audio.dart';
+import 'dart:io';
 
 // ignore: must_be_immutable
 class TrackListener extends StatefulWidget {
@@ -18,6 +17,7 @@ class TrackListenerState extends State<TrackListener> {
   String currentTime = '', endTime = '';
   bool isPlaying = false;
   AudioPlayer player = AudioPlayer();
+  bool isNext;
 
   void initState() {
     super.initState();
