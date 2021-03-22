@@ -1,6 +1,7 @@
 import 'package:multimedia_app/screens/musicplayer/track_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
+import 'package:multimedia_app/screens/musicplayer/musicplayer.dart';
 import 'dart:io';
 import '../../main.dart';
 
@@ -14,7 +15,10 @@ class MusicWidget extends StatefulWidget {
   _MusicWidgetState createState() => _MusicWidgetState();
 }
 
-class _MusicWidgetState extends State<MusicWidget> { 
+class _MusicWidgetState extends State<MusicWidget> {
+
+  final VoidCallback changeTrack;
+
   @override
   Widget build(BuildContext context) {
       return Scaffold(
@@ -44,7 +48,7 @@ class _MusicWidgetState extends State<MusicWidget> {
               onTap: () {
                 widget.currentIndex = index;
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TrackListener(changeTrack: widget.changeTrack,
+                    builder: (context) => TrackListener(changeTrack: changeTrack,
                           songInfo: widget.songs[widget.currentIndex],key:widget.keys
                         )));
               },
