@@ -4,72 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'package:just_audio/just_audio.dart';
 
-// ignore: must_be_immutable
-class TrackListener extends StatefulWidget {
-  SongInfo songInfo;
-  Function changeTrack;
-  GlobalKey<TrackListenerState> key;
-  TrackListener({this.songInfo, this.changeTrack, this.key}) : super(key: key);
-  TrackListenerState createState() => TrackListenerState();
+
+class Listener extends StatefulWidget {
+  Listener({Key key}):super(key: key);
+  @override
+  _ListenerState createState() => _ListenerState();
 }
 
-class TrackListenerState extends State<TrackListener> {
-  double minimumValue = 0.0, maximumValue = 0.0, currentValue = 0.0;
-  String currentTime = '', endTime = '';
-  bool isPlaying = false;
-  AudioPlayer player = AudioPlayer();
-
-  void initState() {
-    super.initState();
-    setSong(widget.songInfo);
-  }
-
-  void dispose() {
-    super.dispose();
-    player?.dispose();
-  }
-
-  void setSong(SongInfo songInfo) async {
-    widget.songInfo = songInfo;
-    await player.setUrl(widget.songInfo.uri);
-    currentValue = minimumValue;
-    maximumValue = player.duration.inMilliseconds.toDouble();
-    setState(() {
-      currentTime = getDuration(currentValue);
-      endTime = getDuration(maximumValue);
-    });
-    isPlaying = false;
-    changeStatus();
-    player.positionStream.listen((duration) {
-      currentValue = duration.inMilliseconds.toDouble();
-      setState(() {
-        currentTime = getDuration(currentValue);
-        if (currentValue == maximumValue) {
-          widget.changeTrack(true);
-        }
-      });
-    });
-  }
-
-  void changeStatus() {
-    setState(() {
-      isPlaying = !isPlaying;
-    });
-    if (isPlaying) {
-      player.play();
-    } else {
-      player.pause();
-    }
-  }
-
-  String getDuration(double value) {
-    Duration duration = Duration(milliseconds: value.round());
-
-    return [duration.inMinutes, duration.inSeconds]
-        .map((element) => element.remainder(60).toString().padLeft(2, '0'))
-        .join(':');
-  }
-
+class _ListenerState extends State<Listener> {
   Widget build(context) {
     return Scaffold(
         appBar: AppBar(
